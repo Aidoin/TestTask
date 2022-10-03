@@ -13,14 +13,13 @@ public class Pointer : MonoBehaviour
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) {
-            Vector2 cursorPosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.touchCount > 0) {
+            Touch touch = Input.GetTouch(0);
+
+            Vector2 cursorPosition = _camera.ScreenToWorldPoint(touch.position);
             if (_playerMove) {
                 _playerMove.AddMovePoint(cursorPosition);
             }
-        } else
-        if (Input.GetKeyDown(KeyCode.Mouse1)) {
-            _playerMove.StopMove();
         }
     }
 }
